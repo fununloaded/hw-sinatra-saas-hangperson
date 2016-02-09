@@ -40,6 +40,7 @@ class HangpersonApp < Sinatra::Base
   post '/guess' do
     letter = params[:guess].to_s[0]
     ### YOUR CODE HERE ###
+    @game.guess(letter)
     redirect '/show'
   end
   
@@ -55,11 +56,13 @@ class HangpersonApp < Sinatra::Base
   
   get '/win' do
     ### YOUR CODE HERE ###
+    @game.check_win_or_lose
     erb :win # You may change/remove this line
   end
   
   get '/lose' do
     ### YOUR CODE HERE ###
+    @game.check_win_or_lose
     erb :lose # You may change/remove this line
   end
   
